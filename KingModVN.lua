@@ -1944,3 +1944,17 @@ KingModVN = {
         end
     end
 }
+
+
+
+if not hook then
+    function hook(lib, offset, val, type)
+        KingModVN.returnValue({
+            {libName = lib, offset = offset, valueType = type or "int", value = val, libIndex = 'auto'}
+        })
+    end
+    
+    function unhook(lib, offset)
+        KingModVN.returnValueOff({{libName = lib, offset = offset}})
+    end
+end
